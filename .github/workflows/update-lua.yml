@@ -31,7 +31,7 @@ jobs:
 
     - name: Checkout latest release of Lua
       run: |
-        url="https://api.github.com/repos/facebook/create-react-app/releases/latest"
+        url="https://api.github.com/repos/lua/lua/releases/latest"
         tag=$(curl -s "$url" | jq -r '.tag_name')
         cd upstream
         git checkout $tag
