@@ -35,7 +35,7 @@ jobs:
         tag=$(curl -s "$url" | jq -r '.tag_name')
         cd upstream
         git fetch --all --tags --prune
-        git checkout git "tags/$tag"
+        git checkout "tags/$tag" -b master
         cd ..
         git add upstream
 
