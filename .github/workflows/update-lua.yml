@@ -2,6 +2,7 @@ name: Update Lua Submodule
 
 on:
   workflow_dispatch:
+  push:
   schedule:
     - cron: "*/5 * * * *"
 
@@ -28,10 +29,13 @@ jobs:
       with:
         submodules: true
 
-    - name: Pull and Update Submodules
+    - name: Checkout latest release of Lua
       run: |
-        git pull --recurse-submodules
-        git submodule update --remote --recursive
+        url="https://api.github.com/repos/facebook/create-react-app/releases/latest"
+        tag=$(curl -s "$url" | jq -r '.tag_name')
+        cd upstream
+        git checkout $tag
+        cd ../
 
     - name: Commit Update
       run: |
