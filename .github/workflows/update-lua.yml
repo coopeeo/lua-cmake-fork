@@ -33,12 +33,7 @@ jobs:
       run: |
         url="https://api.github.com/repos/lua/lua/releases/latest"
         tag=$(curl -s "$url" | jq -r '.tag_name')
-        git rm upstream
-        git clone https://github.com/lua/lua.git upstream
-        cd upstream
-        git submodule init
-        git checkout "$tag"
-        cd ..
+        git -C upstream checkout "$tag"
         git add upstream
 
     - name: Commit Update
