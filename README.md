@@ -1,5 +1,5 @@
 
-# Easily embed lua into applications managed with CMake
+# Easily embed lua into applications managed with CMake (sol compatible)
 
 Due to its simplicity and portability, [Lua](https://www.lua.org) became a popular choice for
 extending applications through a scripting language. The interpreter is available on most platforms,
@@ -25,22 +25,7 @@ on `cmake`'s
 ## CPM
 In the `CMakeLists.txt` of your application, add
 ```
-CPMAddPackage("gh:lubgr/lua-cmake#master")
-
-target_link_libraries(yourTarget PRIVATE lua::lib)
-```
-## Git Submodules
-```bash
-cd path/to/your/project
-
-git submodule add https://github.com/lubgr/lua-cmake external/lua
-
-# Necessary to automatically pull the upstream Lua sources:
-git submodule update --init --recursive external/lua
-```
-In the `CMakeLists.txt` of your application, add
-```
-add_subdirectory(external/lua)
+CPMAddPackage("gh:coopeeo/lua-cmake-fork#sol-compatible")
 
 target_link_libraries(yourTarget PRIVATE lua::lib)
 ```
