@@ -34,8 +34,9 @@ jobs:
         url="https://api.github.com/repos/lua/lua/releases/latest"
         tag=$(curl -s "$url" | jq -r '.tag_name')
         cd upstream
-        git checkout $tag
-        cd ../
+        git checkout "$tag"
+        cd ..
+        git add upstream
 
     - name: Commit Update
       run: |
