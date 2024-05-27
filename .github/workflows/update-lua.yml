@@ -36,6 +36,7 @@ jobs:
         git rm upstream
         git clone https://github.com/lua/lua.git upstream
         cd upstream
+        git submodule init
         git checkout "$tag"
         cd ..
         git add upstream
